@@ -1,0 +1,146 @@
+/* VARIABLES */
+$borderColor: #ccc;
+$textColorActive: #fff;
+$highlightColor: #bbdefb;
+$backgroundColor: #1976d2;
+$fontSize: .813em;
+
+.Mention-container, .Mention-backdrop, .Mention-textarea {
+  color: inherit;
+  height: 100%;
+  min-height: 60px;
+  width: 100%;
+}
+
+.Mention-highlights, .Mention-textarea, .Mention-proxy {
+  font-family: inherit;
+  font-size: $fontSize;
+  line-height: 1.5;
+  margin: 0;
+  padding: 5px;
+}
+
+.Mention-container {
+  border: solid 1px $borderColor;
+  display: block;
+  position: relative;
+
+  -webkit-text-size-adjust: none;
+}
+
+.Mention-backdrop {
+  background-color: transparent;
+  border: none;
+  left: 0;
+  overflow: auto;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  z-index: 9997;
+}
+
+.Mention-highlights {
+  color: transparent;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.Mention-proxy {
+  background: transparent;
+  border: none;
+  box-sizing: border-box;
+  color: transparent;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  z-index: 9996;
+}
+
+.Mention-textarea {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  box-sizing: border-box;
+  display: block;
+  left: 0;
+  margin: 0;
+  overflow: auto;
+  position: absolute;
+  resize: none;
+  top: 0;
+  z-index: 9998;
+}
+
+.Mention-mark {
+  background-color: $highlightColor;
+  border-radius: 2px;
+  color: transparent;
+}
+
+.Mention-reference {
+  height: 0;
+  position: absolute;
+  width: 0;
+  z-index: 9996;
+}
+
+.Mention-suggestions {
+  background-color: $textColorActive;
+  box-shadow: 0 3px 10px 0 rgba(50, 50, 50, .61);
+  opacity: 0;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  position: absolute;
+  transition: opacity .4s;
+  visibility: hidden;
+  width: 200px;
+  z-index: 9999;
+
+  &[x-placement='bottom-start'] {
+    margin-top: 15px;
+  }
+
+  &.Mention-suggestions--block {
+    opacity: 1;
+    visibility: visible;
+  }
+
+   > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li > a {
+      color: inherit;
+      display: flex;
+      font-size: $fontSize;
+      padding: 6px;
+      text-decoration: none;
+
+      align-items: center;
+
+      span {
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: calc(100% - 50px);
+      }
+
+      img {
+        border-radius: 50%;
+        height: 30px;
+        margin-right: 10px;
+        width: 30px;
+      }
+    }
+
+    li:last-child > a {
+      border-bottom: none;
+    }
+
+    li > a.active {
+      background-color: $backgroundColor;
+      color: $textColorActive;
+    }
+  }
+}
